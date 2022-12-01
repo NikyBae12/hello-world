@@ -1,0 +1,49 @@
+{% extends './Formulario5.html' %}
+
+{% block title %} Enviar Email {% endblock %}
+
+{% block body %}
+
+<div class="publicidad">
+    <img class="aviso" src="https://cdn.dribbble.com/users/1015854/screenshots/4814133/fly.gif">
+</div>
+
+<div class="contenedor">
+    <div class="accordion" id="accordionExample">
+        <div id="email" class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+            <button id="email-b" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="True" aria-controls="collapseThree">
+                Enviar Correo Electronico
+            </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form action="{{url_for('sendEmail')}}" method="post">
+                        <p>Llena los campos con los datos necesarios.</p>
+                        <label for="info-user">Escribe el Correo Electronico al que deseas enviar el mensaje.</label>
+                        <div class="filas">
+                            <input type="email" required title="emailU" maxlength="30" placeholder="Eje. migato@gmail.com" class="info-user1" id="emailU" name="emailU">
+                        </div>
+                        <label for="info-user">Escribe el encabezado del mensaje.</label>
+                        <div class="filas">
+                            <input type="text" required title="emailHeader" maxlength="30" placeholder="Eje. Hola Amigo" class="info-user1" id="emailHeader" name="emailHeader">
+                        </div>
+                        <label for="info-user">Escribe el mensaje que deseas enviar.</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name = "mensajeEmail" rows="3" required></textarea><br>
+                        <hr>
+                        <div class="userplace1">
+                            <input type="submit" value="Enviar Email" class="boton1" name = "enviarME">
+                            {% if enviadoEmail == True %}
+                                <div>Email enviado con Éxito.</div>
+                            {% elif enviadoEmail == False %}
+                                <div>Ocurrio un problema con el envio del mensaje.</div>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>  
+
+{% endblock body %}
